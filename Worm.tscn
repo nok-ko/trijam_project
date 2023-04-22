@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2nql3sqw08pd"]
+
+[ext_resource type="Script" path="res://WormHead.gd" id="1_606ud"]
+[ext_resource type="Script" path="res://HeadDraw.gd" id="2_jmgme"]
+[ext_resource type="Script" path="res://BodySegmentDraw.gd" id="3_v7l81"]
+[ext_resource type="Script" path="res://TailDraw.gd" id="4_sove1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyirc"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6oipm"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsvsb"]
+size = Vector2(64, 64)
+
+[node name="Worm" type="StaticBody2D"]
+
+[node name="WormHead" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_vyirc")
+script = ExtResource("1_606ud")
+
+[node name="HeadDraw" type="Node2D" parent="WormHead"]
+script = ExtResource("2_jmgme")
+
+[node name="WormBodySegment" type="CollisionShape2D" parent="."]
+position = Vector2(96, 32)
+shape = SubResource("RectangleShape2D_6oipm")
+
+[node name="BodySegmentDraw" type="Node2D" parent="WormBodySegment"]
+script = ExtResource("3_v7l81")
+
+[node name="WormTail" type="CollisionShape2D" parent="."]
+position = Vector2(160, 32)
+shape = SubResource("RectangleShape2D_lsvsb")
+
+[node name="TailDraw" type="Node2D" parent="WormTail"]
+script = ExtResource("4_sove1")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmbcne3pbrmlx"]
+
+[ext_resource type="Texture2D" uid="uid://g5rkve5ecd5n" path="res://space.png" id="1_8flpj"]
+[ext_resource type="Texture2D" uid="uid://bb5wd3hpudf7k" path="res://wall.png" id="2_7mxi0"]
+[ext_resource type="PackedScene" uid="uid://cldo3ik3ax773" path="res://Guy.tscn" id="3_48yhd"]
+[ext_resource type="PackedScene" uid="uid://c2nql3sqw08pd" path="res://Worm.tscn" id="4_7fo87"]
+[ext_resource type="Script" path="res://WormBodySegment.gd" id="5_csbrs"]
+[ext_resource type="Script" path="res://WormTail.gd" id="6_dkg3j"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o4e2m"]
+vertices = PackedVector2Array(-4.59375, -8, 5, -8, 4.5, -4.5, -5, -4.5, -5.5, 5.5, -8, 5.75, -8, -4.375, 5, 5, 5.03125, 8, -5.59375, 8, 8, -4.3125, 8, 5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3), PackedInt32Array(7, 8, 9, 4, 3, 2), PackedInt32Array(7, 2, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-5, -4.5, -4.59375, -8, 5, -8, 4.5, -4.5, 8, -4.3125, 8, 5, 5, 5, 5.03125, 8, -5.59375, 8, -5.5, 5.5, -8, 5.75, -8, -4.375)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pm50d"]
+texture = ExtResource("1_8flpj")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_o4e2m")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_thvlo"]
+texture = ExtResource("2_7mxi0")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_c53jn"]
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/1 = SubResource("TileSetAtlasSource_pm50d")
+sources/2 = SubResource("TileSetAtlasSource_thvlo")
+
+[node name="World" type="Node2D"]
+
+[node name="Maze" type="TileMap" parent="."]
+position = Vector2(64, 64)
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_c53jn")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 65536, 2, 0, 131072, 2, 0, 196608, 2, 0, 262144, 2, 0, 327680, 2, 0, 393216, 2, 0, 458752, 2, 0, 524288, 2, 0, 589824, 2, 0, 65537, 1, 0, 131073, 1, 0, 196609, 1, 0, 262145, 1, 0, 327681, 1, 0, 393217, 1, 0, 458753, 1, 0, 524289, 1, 0, 589825, 2, 0, 65538, 1, 0, 131074, 2, 0, 196610, 2, 0, 262146, 2, 0, 327682, 2, 0, 393218, 2, 0, 458754, 2, 0, 524290, 1, 0, 589826, 2, 0, 65539, 1, 0, 131075, 2, 0, 196611, 1, 0, 262147, 1, 0, 327683, 1, 0, 393219, 1, 0, 458755, 2, 0, 524291, 1, 0, 589827, 2, 0, 65540, 1, 0, 131076, 2, 0, 196612, 1, 0, 262148, 1, 0, 327684, 1, 0, 393220, 1, 0, 458756, 2, 0, 524292, 1, 0, 589828, 2, 0, 65541, 1, 0, 131077, 2, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0, 458757, 2, 0, 524293, 1, 0, 589829, 2, 0, 65542, 1, 0, 131078, 2, 0, 196614, 1, 0, 262150, 1, 0, 327686, 1, 0, 393222, 1, 0, 458758, 2, 0, 524294, 1, 0, 589830, 2, 0, 65543, 1, 0, 131079, 2, 0, 196615, 1, 0, 262151, 1, 0, 327687, 1, 0, 393223, 1, 0, 458759, 2, 0, 524295, 1, 0, 589831, 2, 0, 65544, 1, 0, 131080, 2, 0, 196616, 1, 0, 262152, 1, 0, 327688, 1, 0, 393224, 1, 0, 458760, 2, 0, 524296, 1, 0, 589832, 2, 0, 65545, 1, 0, 131081, 2, 0, 196617, 1, 0, 262153, 1, 0, 327689, 1, 0, 393225, 1, 0, 458761, 2, 0, 524297, 1, 0, 589833, 2, 0, 65546, 1, 0, 131082, 2, 0, 196618, 1, 0, 262154, 1, 0, 327690, 1, 0, 393226, 1, 0, 458762, 2, 0, 524298, 1, 0, 589834, 2, 0, 11, 2, 0, 65547, 1, 0, 131083, 2, 0, 196619, 1, 0, 262155, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 2, 0, 524299, 1, 0, 589835, 2, 0, 12, 2, 0, 65548, 1, 0, 131084, 2, 0, 196620, 1, 0, 262156, 1, 0, 327692, 1, 0, 393228, 1, 0, 458764, 2, 0, 524300, 1, 0, 589836, 2, 0, 13, 2, 0, 65549, 1, 0, 131085, 2, 0, 196621, 1, 0, 262157, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 2, 0, 524301, 1, 0, 589837, 2, 0, 14, 2, 0, 65550, 1, 0, 131086, 2, 0, 196622, 1, 0, 262158, 1, 0, 327694, 1, 0, 393230, 1, 0, 458766, 2, 0, 524302, 1, 0, 589838, 2, 0, 15, 2, 0, 65551, 1, 0, 131087, 2, 0, 196623, 2, 0, 262159, 2, 0, 327695, 2, 0, 393231, 2, 0, 458767, 2, 0, 524303, 1, 0, 589839, 2, 0, 16, 2, 0, 65552, 1, 0, 131088, 1, 0, 196624, 1, 0, 262160, 1, 0, 327696, 1, 0, 393232, 1, 0, 458768, 1, 0, 524304, 1, 0, 589840, 2, 0, 17, 2, 0, 65553, 2, 0, 131089, 2, 0, 196625, 2, 0, 262161, 2, 0, 327697, 2, 0, 393233, 2, 0, 458769, 2, 0, 524305, 2, 0, 589841, 2, 0, 720895, 1, 0, 655359, 1, 0, 589823, 1, 0, 524287, 1, 0, 458751, 1, 0, 393215, 1, 0, 327679, 1, 0, 262143, 1, 0, 196607, 1, 0, 131071, 1, 0, 65535, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -65518, 1, 0, 18, 1, 0, 65554, 1, 0, 131090, 1, 0, 196626, 1, 0, 262162, 1, 0, 327698, 1, 0, 393234, 1, 0, 458770, 1, 0, 524306, 1, 0, 589842, 1, 0, 655378, 1, 0, 655377, 1, 0, 655376, 1, 0, 655375, 1, 0, 655374, 1, 0, 655373, 1, 0, 655372, 1, 0, 655371, 1, 0, 655370, 1, 0, 655369, 1, 0, 655368, 1, 0, 655367, 1, 0, 655366, 1, 0, 655365, 1, 0, 655364, 1, 0, 655363, 1, 0, 655362, 1, 0, 655361, 1, 0, 655360, 1, 0)
+
+[node name="Guy" parent="." instance=ExtResource("3_48yhd")]
+
+[node name="Worm" parent="." instance=ExtResource("4_7fo87")]
+position = Vector2(960, 128)
+
+[node name="WormBodySegment" parent="Worm" index="1"]
+script = ExtResource("5_csbrs")
+
+[node name="WormTail" parent="Worm" index="2"]
+script = ExtResource("6_dkg3j")
+
+[editable path="Worm"]

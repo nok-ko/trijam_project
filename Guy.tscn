@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cldo3ik3ax773"]
+
+[ext_resource type="Script" path="res://Guy.gd" id="1_mdu2m"]
+[ext_resource type="Texture2D" uid="uid://c1ispk1hwokso" path="res://bean.png" id="2_wqgx8"]
+[ext_resource type="PackedScene" uid="uid://bkpcfsqpca0sr" path="res://UIHeart.tscn" id="3_khhk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d73cw"]
+size = Vector2(31, 41)
+
+[node name="Guy" type="CharacterBody2D"]
+position = Vector2(136, 136)
+script = ExtResource("1_mdu2m")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="HeartsUI" type="Control" parent="Node"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node/HeartsUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UIHeart" parent="Node/HeartsUI/HBoxContainer" instance=ExtResource("3_khhk6")]
+layout_mode = 2
+decay_timeout_seconds = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(20, 22)
+texture = ExtResource("2_wqgx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18.5, 21.5)
+shape = SubResource("RectangleShape2D_d73cw")
